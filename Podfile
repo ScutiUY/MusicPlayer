@@ -7,6 +7,7 @@ target 'Flo' do
 
   # Pods for Flo
   pod 'SnapKit'
+  pod 'MarqueeLabel/Swift'
   target 'FloTests' do
     inherit! :search_paths
     # Pods for testing

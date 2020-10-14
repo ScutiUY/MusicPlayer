@@ -1,16 +1,20 @@
 PODS:
+  - MarqueeLabel/Swift (3.2.1)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
+  - MarqueeLabel/Swift
   - SnapKit
 
 SPEC REPOS:
   trunk:
+    - MarqueeLabel
     - SnapKit
 
 SPEC CHECKSUMS:
+  MarqueeLabel: 2daf039bf916937c8a4c9adfc13577cc5e51b4ce
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: d33c4f3ebe9ad3b217506bb1e1e0040fc3f15bd1
+PODFILE CHECKSUM: e674e7569bfff40f8c37b87eb5c43cd3168a5d97
 
 COCOAPODS: 1.9.3
