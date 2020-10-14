@@ -10,7 +10,7 @@ import UIKit
 class AlbumCoverView: UIImageView {
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: .zero)
         self.contentMode = .scaleAspectFit
         self.clipsToBounds = true
     }
