@@ -9,6 +9,7 @@ import Foundation
 
 var playList = [MusicInfo]()
 
+
 struct MusicInfo: Codable {
     var singer: String
     var albumTitle: String
@@ -17,6 +18,7 @@ struct MusicInfo: Codable {
     var image: String
     var file: String
     var lyrics: String
+    var imageData: Data?
     
     enum CodingKeys: String, CodingKey {
         case singer
