@@ -10,15 +10,24 @@ import UIKit
 
 class MusicInfoStackView: UIStackView {
     
-    init(subViews: [UIView]) {
+    lazy var artist = PlayerButton(fontSize: 20)
+    lazy var songInfoStackView = SongInfoStackView()
+    
+    override init(frame: CGRect) {
         super.init(frame: .zero)
+        
         self.axis = .vertical
         self.alignment = .center
         self.distribution = .fill
-        subViews.forEach{ self.addArrangedSubview($0) }
+        self.addArrangedSubview(songInfoStackView)
+        self.addArrangedSubview(artist)
+        artist.setTitleColor(.lightGray, for: .normal)
+        fetchMusicInfo()
     }
-    
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    private func fetchMusicInfo() {
+        artist.setTitle(playList[0].singer, for: .normal)
     }
 }
