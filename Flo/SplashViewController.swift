@@ -64,7 +64,6 @@ class SplashViewController: UIViewController {
         if let image = imageData, let mp3File = mp3Data {
             MainVC.albumCover.image = UIImage(data: image)
             MainVC.mp3Data = mp3File
-            playList[0].imageData = image
         }
         self.present(MainVC, animated: false, completion: nil)
     }
