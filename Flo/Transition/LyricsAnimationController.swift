@@ -13,7 +13,7 @@ class LyricsAnimationController: NSObject, UIViewControllerAnimatedTransitioning
     
     let duration = TimeInterval(0.2)
     var presenting = true
-    var targetTextView: UITextView?
+    var targetTableView: UITableView?
     var targetImage: UIImage?
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -23,7 +23,6 @@ class LyricsAnimationController: NSObject, UIViewControllerAnimatedTransitioning
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         let containerView = transitionContext.containerView
-        
         if presenting {
             
             guard let fromVC = transitionContext.viewController(forKey: .from) as? MusicPlayerViewController else { fatalError() }
@@ -78,24 +77,24 @@ class LyricsAnimationController: NSObject, UIViewControllerAnimatedTransitioning
             containerView.addSubview(AudioControlButtonStackView.shared)
 
             ProgressBarAndTimeLabelStackView.shared.snp.makeConstraints { (m) in
-                m.width.equalToSuperview().multipliedBy(0.7)
+                m.width.equalToSuperview().multipliedBy(0.9)
                 m.bottom.equalTo(AudioControlButtonStackView.shared.snp.top).offset(-10)
                 m.centerX.equalToSuperview()
             }
             AudioControlButtonStackView.shared.snp.makeConstraints { (m) in
-                m.width.equalToSuperview().multipliedBy(0.7)
+                m.width.equalToSuperview().multipliedBy(0.9)
                 m.centerX.equalToSuperview()
-                m.bottom.equalTo(containerView.snp.bottom).offset(-50)
+                if #available(iOS 11.0, *) {
+                    m.bottom.equalTo(containerView.safeAreaLayoutGuide.snp.bottom)
+                } else {
+                    m.bottom.equalTo(containerView.snp.bottom).offset(-10)
+                }
             }
 
             musicInfoView.snp.makeConstraints { (m) in
-                if #available(iOS 11.0, *) {
-                    m.top.equalTo(containerView.safeAreaLayoutGuide.snp.top).offset(20)
-                } else {
-                    m.top.equalTo(containerView.snp.top).offset(20)
-                }
-                m.width.equalTo(containerView.snp.width).multipliedBy(0.9)
+                m.centerY.equalTo(containerView.snp.centerY).multipliedBy(0.2)
                 m.centerX.equalTo(containerView.snp.centerX)
+                m.width.equalTo(containerView.snp.width).multipliedBy(0.9)
                 m.height.equalTo(containerView.snp.height).multipliedBy(0.1)
             }
             
@@ -103,13 +102,14 @@ class LyricsAnimationController: NSObject, UIViewControllerAnimatedTransitioning
             targetMusicTitleLabel.alpha = 0.0
             targetAlbumTitleLabel.alpha = 0.0
             targetArtistLabel.alpha = 0.0
-            targetTextView!.alpha = 0.0
+            targetTableView!.alpha = 0.0
             
             containerView.layoutIfNeeded()
             
             
             //MARK:- Presenting animation
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear) {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) {
+                
                 albumCoverImageView.snp.remakeConstraints { (m) in
                     m.width.equalTo(musicInfoView.snp.height)
                     m.height.equalTo(musicInfoView.snp.height)
@@ -137,10 +137,7 @@ class LyricsAnimationController: NSObject, UIViewControllerAnimatedTransitioning
                 containerView.layoutIfNeeded()
             } completion: { (complement) in
                 
-                albumCoverImageView.alpha = 0.0
-                musicTitleLabel.alpha = 0.0
-                artistNameLabel.alpha = 0.0
-                
+                musicInfoView.removeFromSuperview()
                 albumCoverImageView.removeFromSuperview()
                 musicTitleLabel.removeFromSuperview()
                 albumTitleLabel.removeFromSuperview()
@@ -149,9 +146,6 @@ class LyricsAnimationController: NSObject, UIViewControllerAnimatedTransitioning
                 toView.alpha = 1.0
                 
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-                UIView.animate(withDuration: 0.3) {
-                    toVC.view.layoutIfNeeded()
-                }
             }
 
             
@@ -172,9 +166,9 @@ class LyricsAnimationController: NSObject, UIViewControllerAnimatedTransitioning
             let artistLabelStartFrame = fromVC.musicInfoView.convert(fromVC.artist.frame, to: fromVC.view)
             
             let albumImageViewFinalFrame = toVC.albumCover.frame
-            let musicTitleLabelFinalFrame = toVC.panelStackView.musicInfoStackView.convert(toVC.panelStackView.musicInfoStackView.songInfoStackView.songTitle.frame, to: toVC.view)
-            let albumTitleLabelFinalFrame = toVC.panelStackView.convert(toVC.panelStackView.musicInfoStackView.songInfoStackView.albumTitle.frame, to: toVC.view)
-            let artistLabelFinalFrame = toVC.panelStackView.convert(toVC.panelStackView.musicInfoStackView.artist.frame, to: toVC.view)
+            let musicTitleLabelFinalFrame = toVC.panelStackView.musicInfoStackView.songInfoStackView.convert(toVC.panelStackView.musicInfoStackView.songInfoStackView.songTitle.frame, to: toVC.view)
+            let albumTitleLabelFinalFrame = toVC.panelStackView.musicInfoStackView.convert(toVC.panelStackView.musicInfoStackView.songInfoStackView.albumTitle.frame, to: toVC.view)
+            let artistLabelFinalFrame = toVC.panelStackView.musicInfoStackView.songInfoStackView.convert(toVC.panelStackView.musicInfoStackView.artist.frame, to: toVC.view)
             
             let albumCoverImageView = UIImageView(frame: albumImageViewStartFrame)
             albumCoverImageView.alpha = 1.0
@@ -185,17 +179,17 @@ class LyricsAnimationController: NSObject, UIViewControllerAnimatedTransitioning
             
             let musicTitleLabel = UILabel(frame: musicTitleLabelStartFrame)
             musicTitleLabel.text = playList[0].title
-            musicTitleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+            musicTitleLabel.font = musicTitleLabel.font.withSize(22)
             musicTitleLabel.textColor = .white
             
             let albumTitleLabel = UILabel()
             albumTitleLabel.text = playList[0].albumTitle
-            albumTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+            albumTitleLabel.font = UIFont.boldSystemFont(ofSize: 18)
             albumTitleLabel.textColor = .white
             
             let artistNameLabel = UILabel(frame: artistLabelStartFrame)
             artistNameLabel.text = playList[0].singer
-            artistNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
+            artistNameLabel.font = UIFont.boldSystemFont(ofSize: 20)
             artistNameLabel.textColor = .lightGray
             
             toVC.view.alpha = 1.0
@@ -232,7 +226,7 @@ class LyricsAnimationController: NSObject, UIViewControllerAnimatedTransitioning
                 toVC.panelStackView.musicInfoStackView.songInfoStackView.songTitle.alpha = 1.0
                 toVC.panelStackView.musicInfoStackView.songInfoStackView.albumTitle.alpha = 1.0
                 toVC.panelStackView.musicInfoStackView.artist.alpha = 1.0
-                toVC.panelStackView.lyricsTextView.alpha = 1.0
+                toVC.panelStackView.lyricsTableView.alpha = 1.0
                 
                 albumCoverImageView.removeFromSuperview()
                 transitionContext.completeTransition(success)
