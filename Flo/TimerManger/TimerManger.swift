@@ -22,11 +22,8 @@ class TimerManger {
             NotificationCenter.default.post(name: .getCurrentTime, object: nil, userInfo: nil)
             
             ProgressBarAndTimeLabelStackView.shared.progressSlider.value = Float(SoundManager.shared.player.currentTime)
-            //self.updateTimeLabelText(time: SoundManager.shared.player.currentTime)
-            //updateLyricsTextView()
         })
         TimerManger.shared.timer.fire()
-        //각자 tableView에 업데이트 가사 노티 보내기
     }
     
     func invalidateTimer() {
