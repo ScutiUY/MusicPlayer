@@ -9,6 +9,16 @@ import Foundation
 
 var playList = [MusicInfo]()
 
+var refineLyrics: [(Double,String)] {
+    var refine = [(Double,String)]()
+    for i in playList[0].lyrics.split(separator: "\n") {
+        var time = String(i.split(separator: "]")[0])
+        let lyrics = String(i.split(separator: "]")[1])
+        time.removeFirst()
+        refine.append(((Double(time.split(separator: ":")[0])! * 60) + (Double(time.split(separator: ":")[1])!) + (Double(time.split(separator: ":")[2])! * 0.001), lyrics))
+    }
+    return refine
+}
 
 struct MusicInfo: Codable {
     var singer: String
@@ -18,7 +28,6 @@ struct MusicInfo: Codable {
     var image: String
     var file: String
     var lyrics: String
-    var imageData: Data?
     
     enum CodingKeys: String, CodingKey {
         case singer
@@ -29,4 +38,5 @@ struct MusicInfo: Codable {
         case file
         case lyrics
     }
+    
 }
