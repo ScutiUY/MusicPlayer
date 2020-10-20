@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A2148AB4F91801EF347CE830 /* Pods_Flo_FloUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC146AEB76023D0F382988B /* Pods_Flo_FloUITests.framework */; };
 		D0B4EEFC7769BA48F6234D56 /* Pods_Flo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA499E97EFAB434A0B05518 /* Pods_Flo.framework */; };
-		E0B891CF15A0C30238EFAF35 /* Pods_FloTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD409354CBD50869BBE609D /* Pods_FloTests.framework */; };
 		F002E87325341B42007B9ADE /* TimerManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002E87225341B42007B9ADE /* TimerManger.swift */; };
 		F033ED8B2522715300B34CAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033ED8A2522715300B34CAE /* AppDelegate.swift */; };
 		F033ED8D2522715300B34CAE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033ED8C2522715300B34CAE /* SceneDelegate.swift */; };
@@ -55,7 +53,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1FD409354CBD50869BBE609D /* Pods_FloTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FloTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D54F51885EC89101978D11 /* Pods-Flo-FloUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flo-FloUITests.debug.xcconfig"; path = "Target Support Files/Pods-Flo-FloUITests/Pods-Flo-FloUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6C0466DC5CE8E0908D852484 /* Pods-Flo-FloUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flo-FloUITests.release.xcconfig"; path = "Target Support Files/Pods-Flo-FloUITests/Pods-Flo-FloUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6CA499E97EFAB434A0B05518 /* Pods_Flo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +91,6 @@
 		F0E15AC3252E2A4800A6A3D6 /* SongInfoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInfoStackView.swift; sourceTree = "<group>"; };
 		F0E15AC8252E2C5300A6A3D6 /* MusicInfoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicInfoStackView.swift; sourceTree = "<group>"; };
 		F0E15ACD252E2D3800A6A3D6 /* AudioControlButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioControlButtonStackView.swift; sourceTree = "<group>"; };
-		FEC146AEB76023D0F382988B /* Pods_Flo_FloUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flo_FloUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +106,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0B891CF15A0C30238EFAF35 /* Pods_FloTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,7 +113,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2148AB4F91801EF347CE830 /* Pods_Flo_FloUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,8 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				6CA499E97EFAB434A0B05518 /* Pods_Flo.framework */,
-				FEC146AEB76023D0F382988B /* Pods_Flo_FloUITests.framework */,
-				1FD409354CBD50869BBE609D /* Pods_FloTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -589,7 +581,6 @@
 /* Begin XCBuildConfiguration section */
 		F033EDAF2522715600B34CAE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8127421B2ACE41B54E067DF8 /* Pods-Flo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -651,7 +642,6 @@
 		};
 		F033EDB02522715600B34CAE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 829C5CAC958A38288D313735 /* Pods-Flo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
