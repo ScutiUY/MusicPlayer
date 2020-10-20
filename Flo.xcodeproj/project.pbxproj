@@ -589,6 +589,7 @@
 /* Begin XCBuildConfiguration section */
 		F033EDAF2522715600B34CAE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8127421B2ACE41B54E067DF8 /* Pods-Flo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -650,6 +651,7 @@
 		};
 		F033EDB02522715600B34CAE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 829C5CAC958A38288D313735 /* Pods-Flo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
