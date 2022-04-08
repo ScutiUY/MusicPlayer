@@ -1,0 +1,6 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk iphonesimulator -workspace flo.xcworkspace -scheme flo Debug
+
+Build settings from command line:
+    SDKROOT = iphonesimulator14.0
+

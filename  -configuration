@@ -1,0 +1,13 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk iphonesimulator -workspace flo.xcworkspace -scheme Debug
+
+Build settings from command line:
+    SDKROOT = iphonesimulator14.0
+
+note: Using new build system
+note: Building targets in parallel
+note: Planning build
+note: Using build description from disk
+warning: The iOS Simulator deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 8.0, but the range of supported deployment target versions is 9.0 to 14.0.99. (in target 'MarqueeLabel' from project 'Pods')
+** BUILD SUCCEEDED **
+

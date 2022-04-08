@@ -200,10 +200,8 @@ class MusicPlayerViewController: UIViewController {
         }
         
         if sender.isSelected {
-            //self.makeAndFireTimer() // shared.makeAndFireTime
-            TimerManger.shared.makeAndFireTimer()
+            TimerManger.shared.makeAndFireTimer(vc: self)
         } else {
-            //self.invalidateTimer() // shared.invalidateTimer()
             TimerManger.shared.invalidateTimer()
         }
         

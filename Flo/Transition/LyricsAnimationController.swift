@@ -106,9 +106,8 @@ class LyricsAnimationController: NSObject, UIViewControllerAnimatedTransitioning
             
             containerView.layoutIfNeeded()
             
-            
             //MARK:- Presenting animation
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
                 
                 albumCoverImageView.snp.remakeConstraints { (m) in
                     m.width.equalTo(musicInfoView.snp.height)
@@ -121,7 +120,7 @@ class LyricsAnimationController: NSObject, UIViewControllerAnimatedTransitioning
                     m.centerX.equalTo(containerView.snp.centerX)
                 }
                 albumTitleLabel.snp.remakeConstraints { (m) in
-                    m.centerY.equalTo(musicInfoView.snp.centerY).multipliedBy(0.1)
+                    m.centerY.equalTo(musicInfoView.snp.centerY).multipliedBy(0.7)
                     m.centerX.equalTo(containerView.snp.centerX)
                 }
                 artistNameLabel.snp.remakeConstraints { (m) in
@@ -201,7 +200,7 @@ class LyricsAnimationController: NSObject, UIViewControllerAnimatedTransitioning
             containerView.addSubview(artistNameLabel)
             
             //MARK:- Dismissing animation
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn) {
                 
                 albumCoverImageView.frame = albumImageViewFinalFrame
                 albumCoverImageView.layer.cornerRadius = 20
