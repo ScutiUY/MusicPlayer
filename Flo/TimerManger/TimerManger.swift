@@ -12,10 +12,12 @@ class TimerManger {
     
     static let shared = TimerManger()
     
+    private init() { }
+    
     var timer: Timer!
     
     func makeAndFireTimer(vc: MusicPlayerViewController) {
-        TimerManger.shared.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [unowned self] (timer: Timer) in
+        TimerManger.shared.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer: Timer) in
             
             if ProgressBarAndTimeLabelStackView.shared.progressSlider.isTracking { return }
             

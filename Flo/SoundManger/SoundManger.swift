@@ -15,10 +15,9 @@ class SoundManager: NSObject {
     
     var player: AVAudioPlayer!
     
-    override init() {
+    private override init() {
         try? AVAudioSession.sharedInstance().setCategory(.playback)
         try? AVAudioSession.sharedInstance().setActive(true)
-        
     }
     
     func initializedPlayer(soundData: Data?) {
