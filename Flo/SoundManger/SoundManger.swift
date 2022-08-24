@@ -34,6 +34,7 @@ class SoundManager: NSObject {
     }
     
 }
+
 extension SoundManager: AVAudioPlayerDelegate {
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         guard let error: Error = error else {
@@ -54,10 +55,12 @@ extension SoundManager: AVAudioPlayerDelegate {
         
         alert.addAction(okAction)
     }
+    
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         NotificationCenter.default.post(name: .AudioPlayerDidFinishPlaying, object: nil)
     }
 }
+
 extension Notification.Name {
     static let AudioPlateyDecodeError = Notification.Name("AudioPlayerDecodeError")
     static let AudioPlayerDidFinishPlaying = Notification.Name("AudioPlayerDidFinishPlaying")

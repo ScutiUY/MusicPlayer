@@ -118,8 +118,6 @@ class MusicPlayerViewController: UIViewController {
         panelStackView.lyricsTableView.register(LyricsTableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
-    
-    
     //MARK:- 재생 시간 업데이트
     private func updateTimeLabelText(time: TimeInterval) {
         print("수동 재생시간 업데이트")
@@ -134,12 +132,10 @@ class MusicPlayerViewController: UIViewController {
     }
     
     @objc func updateNotiTimeLabelText() {
-        print("자동 재생시간 업데이트")
         let minute: Int = Int(SoundManager.shared.player.currentTime / 60)
         let second: Int = Int(SoundManager.shared.player.currentTime.truncatingRemainder(dividingBy: 60))
         
         let timeText: String = String(format: "%02ld:%02ld", minute, second)
-        
         ProgressBarAndTimeLabelStackView.shared.timeLabel.text = timeText
         updateLyricsTextView()
     }
@@ -190,13 +186,9 @@ class MusicPlayerViewController: UIViewController {
         sender.isSelected.toggle()
         
         if sender.isSelected {
-            DispatchQueue.global(qos: .background).async {
-                SoundManager.shared.player?.play()
-            }
+                SoundManager.shared.player!.play()
         } else {
-            DispatchQueue.global(qos: .background).async {
                 SoundManager.shared.player?.pause()
-            }
         }
         
         if sender.isSelected {

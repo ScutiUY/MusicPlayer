@@ -28,10 +28,13 @@ class SplashViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(exitSplash), userInfo: nil, repeats: false)
         
     }
+    
     private func getMusicJsonInfo() {
+        
         guard let url = URL(string: "https://grepp-programmers-challenges.s3.ap-northeast-2.amazonaws.com/2020-flo/song.json") else {
             fatalError("Invalid URL")
         }
+        
         DispatchQueue.global().async {
             let session = URLSession.shared
             let request = URLRequest(url: url)
@@ -39,7 +42,7 @@ class SplashViewController: UIViewController {
                 guard let data = data else {
                     fatalError("Invalid Data")
                 }
-                
+                print("진입")
                 let decoder = JSONDecoder()
                 do {
                     let p = try decoder.decode(MusicInfo.self, from: data)
@@ -47,6 +50,7 @@ class SplashViewController: UIViewController {
                     
                     guard let imageURL = URL(string: playList[0].image) else { fatalError("Invalid imageURL") }
                     guard let mp3URL = URL(string: playList[0].file) else { fatalError("Invalid mp3File") }
+                    print("mp3URL",mp3URL)
                     self.imageData = try Data(contentsOf: imageURL)
                     self.mp3Data = try Data(contentsOf: mp3URL)
                     
@@ -58,6 +62,7 @@ class SplashViewController: UIViewController {
         }
         
     }
+    
     @objc func exitSplash() {
         let MainVC = UIStoryboard(name: "MusicPlayerSB", bundle: nil).instantiateViewController(withIdentifier: "MusicPlayerSB") as! MusicPlayerViewController
         MainVC.modalPresentationStyle = .fullScreen

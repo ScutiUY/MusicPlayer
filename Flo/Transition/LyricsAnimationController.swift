@@ -238,3 +238,4 @@ class LyricsAnimationController: NSObject, UIViewControllerAnimatedTransitioning
     
     
 }
+
