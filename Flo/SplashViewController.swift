@@ -42,7 +42,6 @@ class SplashViewController: UIViewController {
                 guard let data = data else {
                     fatalError("Invalid Data")
                 }
-                print("진입")
                 let decoder = JSONDecoder()
                 do {
                     let p = try decoder.decode(MusicInfo.self, from: data)
@@ -50,7 +49,6 @@ class SplashViewController: UIViewController {
                     
                     guard let imageURL = URL(string: playList[0].image) else { fatalError("Invalid imageURL") }
                     guard let mp3URL = URL(string: playList[0].file) else { fatalError("Invalid mp3File") }
-                    print("mp3URL",mp3URL)
                     self.imageData = try Data(contentsOf: imageURL)
                     self.mp3Data = try Data(contentsOf: mp3URL)
                     

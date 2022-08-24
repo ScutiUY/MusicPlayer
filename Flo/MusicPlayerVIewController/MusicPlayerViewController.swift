@@ -34,7 +34,6 @@ class MusicPlayerViewController: UIViewController {
     // MARK:- viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
         SoundManager.shared.initializedPlayer(soundData: mp3Data)
         setLayout()
         addAction()
@@ -120,7 +119,6 @@ class MusicPlayerViewController: UIViewController {
     
     //MARK:- 재생 시간 업데이트
     private func updateTimeLabelText(time: TimeInterval) {
-        print("수동 재생시간 업데이트")
         let minute: Int = Int(time / 60)
         let second: Int = Int(time.truncatingRemainder(dividingBy: 60))
         
